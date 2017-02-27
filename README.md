@@ -6,4 +6,15 @@ the original project can be found: https://github.com/carpedm20/lstm-char-cnn-te
 
 Thanks to the author:Taehoon Kim / @carpedm20
 
-Under MIT License
+MIT License
+
+
+replace files in "lstm-char-cnn-tensorflow" project with same name.
+
+replace "batch_loader.py" with "batch_loader_chinese.py", and rename "batch_loader_chinese.py" as "batch_loader.py" to process Chinese
+
+The Chinese dataset should be preprocessed with fine word segmentation
+
+e.g:"今天 天气 真 好啊"
+
+this project using jieba, which can be found in https://github.com/fxsjy/jieba/
