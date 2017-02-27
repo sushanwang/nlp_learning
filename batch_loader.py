@@ -136,9 +136,8 @@ class BatchLoader(object):
           line = line.replace('{', '')
 
           for word in line.split() + ['+']:
-            print "word"
-            print word
             chars = [char2idx['{']]
+
             if word[0] == '|' and len(word) > 1:
               word = word[2:]
               output_tensor[word_num] = word2idx['|']
@@ -148,13 +147,11 @@ class BatchLoader(object):
                 word2idx[word] = len(idx2word) - 1
               output_tensor[word_num] = word2idx[word]
 
-            for char in word:
-              print "char"
-              print char
-              if not char2idx.has_key(char):
-                idx2char.append(char)
-                char2idx[char] = len(idx2char) - 1
-              chars.append(char2idx[char])
+            for item in range(0,len(word),3):
+              if not char2idx.has_key(word[item:item+3]):
+                idx2char.append(word[item:item+3])
+                char2idx[word[item:item+3]] = len(idx2char) - 1
+              chars.append(char2idx[word[item:item+3]])
             chars.append(char2idx['}'])
 
             if len(chars) == max_word_length:
